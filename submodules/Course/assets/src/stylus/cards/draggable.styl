@@ -1,0 +1,17 @@
+.sortable {
+    &-handle {
+        cursor: move;
+    }
+
+    &-container .sortable-chosen {
+        transition: all 0.2s ease-in-out;
+    }
+
+    &-chosen {
+        background-color: $light-green.lighten-3;
+    }
+
+    &-ghost {
+        opacity: 1;
+    }
+}

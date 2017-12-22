@@ -1,0 +1,26 @@
+.active {
+    &--primary {
+        &, .list__tile--active {
+            background-color: $theme.primary;
+            font-weight: bold;
+        }
+    }
+}
+
+
+.list__tile--highlighted, a.list__tile:hover {
+    color: white;
+}
+
+.theme--dark {
+    .navigation-drawer {
+        .list--group__container .list.list--group {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+        .list__tile {
+            &:hover, &:active, &:focus {
+                color: $theme.error;
+            }
+        }
+    }
+}

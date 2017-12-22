@@ -1,0 +1,74 @@
+@extends("Theme::layouts.admin")
+
+@section("head-title", __($resource->title))
+@section("utilitybar", '')
+
+@section("content")
+    <yggdrasil-course
+        :resource="{{ json_encode($resource->toArray()) }}"
+    >
+        <template slot="cover.toolbar">
+            <v-toolbar dense card class="white">
+                <v-spacer></v-spacer>
+
+                @enrolled()
+                <v-chip small class="ml-0 green white--text">{{ __('Enrolled') }}</v-chip>
+                @endenrolled
+
+                {{-- @bookmarked() --}}
+                {{-- <v-btn icon ripple v-tooltip:left="{html: '{{ __('Bookmarked') }}'}">
+                    <v-icon light>bookmark</v-icon>
+                </v-btn> --}}
+                <v-btn icon ripple v-tooltip:left="{html: '{{ __('Add to Bookmark') }}'}">
+                    <v-icon light>bookmark_border</v-icon>
+                </v-btn>
+                {{-- @endbookmarked --}}
+            </v-toolbar>
+        </template>
+        <template slot="cover.card" scope="{prop}">
+            <v-card-text>
+                <v-container fluid grid-list-lg>
+                    <v-flex sm12>
+                        <v-layout row wrap>
+                            <v-flex md3 sm2>
+                                <v-card-media ripple :src="prop.feature" height="150px" class="elevation-1"></v-card-media>
+                            </v-flex>
+                            <v-flex md9 sm10>
+                                <v-card-title primary-title class="pa-0">
+                                    <strong class="headline td-n accent--text" v-html="prop.title"></strong>
+                                </v-card-title>
+
+                                <v-avatar size="30px">
+                                    <img :src="prop.user.avatar" :alt="prop.user.fullname">
+                                </v-avatar>
+                                <v-chip label small class="pl-0 caption transparent grey--text elevation-0">
+                                    <a href="" v-html="prop.user.displayname"></a>
+                                </v-chip>
+
+                                <v-footer class="transparent">
+                                    <v-chip label small class="pl-0 ml-0 caption transparent grey--text elevation-0"><v-icon left small class="subheading">fa-tasks</v-icon>&nbsp;<span v-html="`${prop.lessons.length} {{ __('Parts') }}`"></span></v-chip>
+
+                                    <v-chip label small class="pl-0 ml-0 caption transparent grey--text elevation-0"><v-icon left small class="subheading">class</v-icon><span v-html="prop.code"></span></v-chip>
+
+                                    <v-chip v-if="prop.category" label class="pl-0 ml-0 caption transparent grey--text elevation-0"><v-icon left small class="subheading">label</v-icon><span v-html="prop.category.name"></span></v-chip>
+
+                                    <v-chip label small class="pl-0 ml-0 caption transparent grey--text elevation-0"><v-icon left small class="subheading">fa-clock-o</v-icon><span v-html="prop.created"></span></v-chip>
+                                </v-footer>
+                            </v-flex>
+                        </v-layout>
+                    </v-flex>
+                </v-container>
+            </v-card-text>
+        </template>
+    </yggdrasil-course>
+    <v-container fluid grid-list-lg>
+    </v-container>
+@endsection
+
+@push('css')
+    <link rel="stylesheet" href="{{ assets('course/course/dist/course.min.css') }}">
+@endpush
+
+@push('pre-scripts')
+    <script src="{{ assets('course/course/dist/course.min.js') }}"></script>
+@endpush

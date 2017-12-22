@@ -1,0 +1,113 @@
+$monokai = {
+    brown: #272822,
+    pink: #F92672,
+    blue: #66D9EF,
+    lime: #A6E22E,
+    orange: #FD971F,
+}
+
+.quill-editor {
+    &.ql-container.ql-snow {
+        border: none;
+        box-shadow: none;
+        border: none;
+    }
+
+    &.ql-editor {
+        for name, color in ($colors) {
+            &--{name}:before {
+                content: "";
+                height: 100%;
+                position: absolute;
+                width: 1px;
+                top: 0;
+                left: 30px;
+                background-color: color.lighten-5;
+            }
+        }
+    }
+
+    .ql-editor {
+        min-height: 200px;
+        padding-left: 40px;
+
+        h1, h2, h3, h4, h5, h6,
+        p {
+            margin-bottom: $spacers.two.y;
+        }
+    }
+}
+
+.quill-toolbar {
+    &.ql-toolbar.ql-snow {
+        border: none;
+    }
+}
+
+.ql-toolbar.ql-snow,
+.ql-container.ql-snow {
+    border: none;
+    font-family: $body-font-family;
+    font-size: $font-size-root;
+}
+
+// Font & font size
+&[data-value="Montserrat"] {
+    font-family: 'Montserrat', $body-font-family;
+}
+
+.ql-picker-options .ql-picker-item {
+
+    &[data-value="18px"] {
+        font-size: 18px;
+    }
+
+    &[data-value="10px"] {
+        font-size: 10px;
+    }
+
+    &[data-value="32px"] {
+        font-size: 32px;
+    }
+}
+
+.ql-font-Montserrat {
+    font-family: 'Montserrat', $body-font-family;
+}
+
+.preview-editor {
+    min-height: 100%;
+}
+
+.mode {
+    transition: all 0.9s ease-in-out;
+
+    &-distraction-free {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        z-index: 999 !important;
+        width: 100% !important;
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        display: flex;
+        height: 100% !important;
+        flex-flow: column;
+        // min-height: 100vh !important;
+
+        .CodeMirror {
+            // min-height: 100vh !important;
+        }
+    }
+}
+
+.CodeMirror {
+    min-height: 300px;
+    height: auto !important;
+    padding: 2rem 0;
+    &-scroll {
+        overflow: auto !important;
+    }
+}
