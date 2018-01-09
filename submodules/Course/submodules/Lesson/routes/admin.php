@@ -1,3 +1,3 @@
 <?php
 
-Route::resource('lessons', 'Lesson\Controllers\LessonController');
+Route::resource('lessons', '\Lesson\Controllers\LessonController');

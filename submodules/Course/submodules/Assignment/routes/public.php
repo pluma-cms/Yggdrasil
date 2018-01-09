@@ -1,3 +1,3 @@
 <?php
 
-Route::resource('assignments', 'Assignment\Controllers\AssignmentController');
+Route::resource('assignments', '\Assignment\Controllers\AssignmentController');

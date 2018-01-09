@@ -4,7 +4,7 @@ namespace Course\Models;
 
 use Bookmark\Support\Scopes\OnlyBookmarkedBy;
 use Bookmark\Support\Traits\Bookmarkable;
-use Category\Support\Traits\BelongsToCategory;
+use Category\Support\Relations\BelongsToCategory;
 use Course\Support\Mutators\CourseMutator;
 use Course\Support\Traits\BelongsToManyUsers;
 use Course\Support\Traits\EnrolledUserMutator;

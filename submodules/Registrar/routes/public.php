@@ -1,3 +1,3 @@
 <?php
 
-Route::resource('registrars', 'Registrar\Controllers\RegistrarController');
+Route::resource('registrars', '\Registrar\Controllers\RegistrarController');
